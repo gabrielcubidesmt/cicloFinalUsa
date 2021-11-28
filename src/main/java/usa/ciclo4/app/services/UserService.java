@@ -46,7 +46,7 @@ public class UserService {
     public User authUser(String email, String password){
         Optional<User> user = repository.authUser(email, password);
 
-        if (user.isEmpty()){
+        if (!user.isPresent()){
             return new User(email, password, "NO DEFINIDO");
         }else {
             return user.get();
